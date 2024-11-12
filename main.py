@@ -1,18 +1,6 @@
-err = {
-    'length': 'Длина пароля не равна 8 символам',
-    'upper': 'Отсутствуют заглавные буквы',
-    'lower': 'Нет строчных букв в пароле',
-    'digits': 'Нет цифр в пароле',
-    }
-
-password = input('Пароль:')
-if len(password) < 10:
-    print(err['length'])
-if password.islower() == True:
-    print(err['upper'])
-if password.isupper() == True:
-    print(err['lower'])
-if password.isdigit() == False:
-    print(err['digits'])
-else:
-    print('PASS')
+lst = [8, 10, 6, 5, 4, 0]
+max = 0
+for i in lst:
+    if i >= max:
+        max = i
+print(max)
