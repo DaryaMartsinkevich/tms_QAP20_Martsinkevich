@@ -20,7 +20,7 @@ def first_task(text):
     print("Длина строки:", length)
 
 
-first_task()
+first_task('Darya Martsinkevich')
 
 
 # 2 Присвойте произвольную строку длиной 10-15 символов переменной и извлеките из

@@ -7,8 +7,8 @@ def unique_number(numb):
     return unique
 
 
-numb = [1, 5, 2, 9, 2, 9, 1]
-unique_number = unique_number(numb)
+numbs = [1, 5, 2, 9, 2, 9, 1]
+unique_number = unique_number(numbs)
 print("Уникальное число:", unique_number)
 
 
