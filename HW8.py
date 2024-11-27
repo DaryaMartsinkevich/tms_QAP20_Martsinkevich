@@ -1,7 +1,5 @@
 import time
 
-from HW.HW7 import numbers
-
 
 # 1 Написать обычную функцию для факториала, генератор и рекурсию. Сравнить их время работы
 def factorial(n):
