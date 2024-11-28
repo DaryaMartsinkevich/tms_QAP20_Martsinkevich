@@ -67,7 +67,7 @@ print(add_two_symbols(5, 5))
 print(add_two_symbols('a', 'b'))
 
 
-@typed(int)
+@typed(float)
 def add_three_symbols(a, b, с):
     return a + b + с
 
