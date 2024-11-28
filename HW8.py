@@ -3,56 +3,61 @@ import time
 
 # 1 Написать обычную функцию для факториала, генератор и рекурсию. Сравнить их время работы
 def factorial(n):
-    for i in range(4, n-1):
-        if i > 0:
-            return i
+    result = 1
+    for i in range(1, n+1):
+        result *= i
+    return result
 
 
 def factorial_generator(n):
-    for i in range(n-1):
-        if i > 0:
-            yield i
+    result = 1
+    for i in range(1, n+1):
+        result *= i
+        yield result
 
 
 def factorial_recursive(n):
     if n == 0:
         return 1
-    else:
-        return n * factorial_recursive(n-1)
+    return n * factorial_recursive(n-1)
 
 
-factorial_time = time.time()
-factorial(4)
+def operating_time(func, *args):
+    start = time.time()
+    rezult = func(*args)
+    end = time.time()
+    return rezult, end - start
 
-generator_time = time.time()
-factorial_generator(4)
 
-recursive_time = time.time()
-factorial_recursive(4)
+n = 30
 
-print("Время работы факториала: ", factorial_time)
-print("Время работы генератора: ", generator_time)
-print("Время работы рекурсии: ", recursive_time)
+factorial_result = operating_time(factorial, n)
+
+start_generator = time.time()
+result_generator = list(factorial_generator(n))[-1]
+generator_time = time.time() - start_generator
+
+recursive_result = operating_time(factorial_recursive, n)
+
+print(factorial_result, (result_generator, generator_time), recursive_result, sep='\n')
 
 
 # 2 Напишите декоратор, который проверял бы тип параметров функции, конвертировал их если надо и складывал:
 def typed(type):
     def decorator(func):
-        def wrapper(*args, **kwargs):
+        def wrapper(*args):
             args1 = []
             for i in args:
-                if type == 'str':
-                    args1.append(str(i))
-                elif type == 'int':
-                    args1.append(int(i))
-                else:
+                if isinstance(i, type):
                     args1.append(i)
+                else:
+                    args1.append(type(i))
             return func(*args1)
         return wrapper
     return decorator
 
 
-@typed(type = 'str')
+@typed(str)
 def add_two_symbols(a, b):
     return a + b
 
@@ -62,7 +67,7 @@ print(add_two_symbols(5, 5))
 print(add_two_symbols('a', 'b'))
 
 
-@typed(type = 'int')
+@typed(int)
 def add_three_symbols(a, b, с):
     return a + b + с
 
