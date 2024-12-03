@@ -6,11 +6,11 @@ class Cinema:
 
 
 class TicketOffice(Cinema):
-    def __init__(self, name_of_movie, genre, hall, time, places, tickets):
+    def __init__(self, name_of_movie, genre, _hall, time, places, tickets):
         super().__init__("Гродно", "Красная звезда", "3D")
         self.name_of_movie: str = name_of_movie
         self.genre: str = genre
-        self.hall: int = hall
+        self._hall: int = _hall
         self.time: float = time
         self.places: int = places
         self.tickets: int = tickets
@@ -20,7 +20,7 @@ class TicketOffice(Cinema):
               f"Название фильма: {self.name_of_movie}\n"
               f"Жанр: {self.genre}\n"
               f"Начало фильма: {self.time}\n"
-              f"Номер зала: {self.hall}")
+              f"Номер зала: {self._hall}")
 
     def ticket_info(self, count):
         self.tickets -= count
@@ -28,15 +28,15 @@ class TicketOffice(Cinema):
         print(f"Осталось билетов: {self.tickets}\n"
               f"Свободных мест: {self.places}\n")
 
-    def new_info(self, new_movie, genre, time, hall):
+    def new_info(self, new_movie, genre, time, _hall):
         self.name_of_movie = new_movie
         self.genre = genre
         self.time = time
-        self.hall = hall
+        self._hall = _hall
         print(f"Добавлен новый фильм: {new_movie}\n"
               f"Жанр: {self.genre}\n"
               f"Начало фильма: {self.time}\n"
-              f"Номер зала: {self.hall}")
+              f"Номер зала: {self._hall}")
 
 
 movie = TicketOffice("Аватар", "fantasy", 1, 10.15, 60, 60)
