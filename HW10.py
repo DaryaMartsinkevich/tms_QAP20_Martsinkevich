@@ -32,11 +32,7 @@ class Flower(ABC):
 
     @abstractmethod
     def __str__(self):
-        return (
-            f'name = {self.name}'
-            f'cost = {self.cost}'
-            f'lifespan = {self.lifespan}'
-        )
+        pass
 
 
 class Rose(Flower):
